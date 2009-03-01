@@ -7,22 +7,16 @@
 //
 
 #import "GrowlITTSWController.h"
+#import "GrowlITTSWPrefs.h"
 
-#import <ITKit/ITTSWBackgroundView.h>
 #import <ITKit/ITWindowEffect.h>
+#import <ITKit/ITTSWBackgroundView.h>
 
 #import "RegexKitLite.h"
 
-#import "GrowlPositioningDefines.h"
-
-@interface GrowlPositionController
-+ (enum GrowlPosition)selectedOriginPosition;
-@end
-
 @implementation NSImage (SmoothAdditions)
 
-- (NSImage *)imageScaledSmoothlyToSize:(NSSize)scaledSize
-{
+- (NSImage *)imageScaledSmoothlyToSize:(NSSize)scaledSize {
     NSImage *newImage;
     NSImageRep *rep = [self bestRepresentationForDevice:nil];
     
@@ -39,43 +33,81 @@
 
 @end
 
+@interface GrowlITTSWController (Private)
+- (void)syncWithPrefs;
+@end
+
 @implementation GrowlITTSWController
 
-- (id)init
-{
+- (id)init {
     if ( ( self = [super init] ) ) {
-		NSArray *screens = [NSScreen screens];
-        
 		_window = [[GrowlITTSWWindow sharedWindow] retain];
-		
-		[_window setScreen:[screens objectAtIndex:0]];
-		
-        [_window setExitMode:ITTransientStatusWindowExitAfterDelay];
-        [_window setExitDelay:4.0];
-        
-        [_window setSizing:ITTransientStatusWindowMini];
-        
-        [_window setEntryEffect:[[[NSClassFromString(@"ITSlideVerticallyWindowEffect") alloc] initWithWindow:_window] autorelease]];
-        [_window setExitEffect:[[[NSClassFromString(@"ITSlideHorizontallyWindowEffect") alloc] initWithWindow:_window] autorelease]];
-        
-        [[_window entryEffect] setEffectTime:0.8];
-        [[_window exitEffect]  setEffectTime:0.8];
-        
-        [(ITTSWBackgroundView *)[_window contentView]setBackgroundMode:
-		 ITTSWBackgroundReadable];
+		[_window setExitMode:ITTransientStatusWindowExitAfterDelay];
+		[self syncWithPrefs];
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(syncWithPrefs) name:@"GrowlPreferencesChanged" object:nil];
     }
     
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [_window release];
     [super dealloc];
 }
 
-- (void)showWindowWithText:(NSString *)text image:(NSImage *)image
-{
+- (void)syncWithPrefs {
+	NSScreen *screen = [GrowlITTSWPrefs screen];
+	ITHorizontalWindowPosition horizontalPosition = [GrowlITTSWPrefs horizontalPosition];
+	ITVerticalWindowPosition verticalPosition = [GrowlITTSWPrefs verticalPosition];
+	
+	Class appearanceEffect = [GrowlITTSWPrefs appearanceEffect];
+	float appearanceSpeed = [GrowlITTSWPrefs appearanceSpeed];
+	Class vanishEffect = [GrowlITTSWPrefs vanishEffect];
+	float vanishSpeed = [GrowlITTSWPrefs vanishSpeed];
+	float vanishDelay = [GrowlITTSWPrefs vanishDelay];
+	
+	ITTSWBackgroundMode backgroundStyle = [GrowlITTSWPrefs backgroundStyle];
+	NSColor *backgroundColor = [GrowlITTSWPrefs backgroundColor];
+	ITTransientStatusWindowSizing windowSize = [GrowlITTSWPrefs windowSize];
+	
+	if ([_window screen] != screen) {
+		[_window setScreen:screen];
+	}
+	if ([_window horizontalPosition] != horizontalPosition) {
+		[_window setHorizontalPosition:horizontalPosition];
+	}
+	if ([_window verticalPosition] != verticalPosition) {
+		[_window setVerticalPosition:verticalPosition];
+	}
+	
+	if (![[_window entryEffect] isKindOfClass:appearanceEffect]) {
+		[_window setEntryEffect:[[[appearanceEffect alloc] initWithWindow:_window] autorelease]];
+	}
+	if ([[_window entryEffect] effectTime] != appearanceSpeed) {
+		[[_window entryEffect] setEffectTime:appearanceSpeed];
+	}
+	if (![[_window exitEffect] isKindOfClass:vanishEffect]) {
+		[_window setExitEffect:[[[vanishEffect alloc] initWithWindow:_window] autorelease]];
+	}
+	if ([[_window exitEffect] effectTime] != vanishSpeed) {
+		[[_window exitEffect]  setEffectTime:vanishSpeed];
+	}
+	if ([_window exitDelay] != vanishDelay) {
+		[_window setExitDelay:vanishDelay];
+	}
+	
+	if ([(ITTSWBackgroundView *)[_window contentView] backgroundMode] != backgroundStyle) {
+		[(ITTSWBackgroundView *)[_window contentView] setBackgroundMode:backgroundStyle];
+	}
+	if (([(ITTSWBackgroundView *)[_window contentView] backgroundMode] == ITTSWBackgroundColored) && ![[(ITTSWBackgroundView *)[_window contentView] backgroundColor] isEqual:backgroundColor]) {
+		[(ITTSWBackgroundView *)[_window contentView] setBackgroundColor:backgroundColor];
+	}
+	if ([_window sizing] != windowSize) {
+		[_window setSizing:windowSize];
+	}
+}
+
+- (void)showWindowWithText:(NSString *)text image:(NSImage *)image {
 	NSSize newSize;
 	NSSize oldSize = [image size];
 	
@@ -113,29 +145,6 @@
 				endOfLastRange = NSNotFound;
 			}
 		}
-	}
-	
-	switch ([GrowlPositionController selectedOriginPosition]) {
-		case GrowlMiddleColumnPosition:
-			[_window setVerticalPosition:ITWindowPositionMiddle];
-			[_window setHorizontalPosition:ITWindowPositionCenter];
-			break;
-		case GrowlTopLeftPosition:
-			[_window setVerticalPosition:ITWindowPositionTop];
-			[_window setHorizontalPosition:ITWindowPositionLeft];
-			break;
-		case GrowlBottomRightPosition:
-			[_window setVerticalPosition:ITWindowPositionBottom];
-			[_window setHorizontalPosition:ITWindowPositionRight];
-			break;
-		case GrowlTopRightPosition:
-			[_window setVerticalPosition:ITWindowPositionTop];
-			[_window setHorizontalPosition:ITWindowPositionRight];
-			break;
-		case GrowlBottomLeftPosition:
-			[_window setVerticalPosition:ITWindowPositionBottom];
-			[_window setHorizontalPosition:ITWindowPositionLeft];
-			break;
 	}
 	
 	[_window setImage:image];

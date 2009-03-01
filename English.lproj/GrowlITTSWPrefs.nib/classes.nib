@@ -54,14 +54,53 @@
 			<string>NSResponder</string>
 		</dict>
 		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>setAppearanceEffect</key>
+				<string>id</string>
+				<key>setAppearanceSpeed</key>
+				<string>id</string>
+				<key>setBackgroundColor</key>
+				<string>id</string>
+				<key>setBackgroundStyle</key>
+				<string>id</string>
+				<key>setScreen</key>
+				<string>id</string>
+				<key>setVanishDelay</key>
+				<string>id</string>
+				<key>setVanishEffect</key>
+				<string>id</string>
+				<key>setVanishSpeed</key>
+				<string>id</string>
+				<key>setWindowSize</key>
+				<string>id</string>
+			</dict>
 			<key>CLASS</key>
 			<string>GrowlITTSWPrefs</string>
 			<key>LANGUAGE</key>
 			<string>ObjC</string>
 			<key>OUTLETS</key>
 			<dict>
+				<key>appearanceEffectButton</key>
+				<string>NSPopUpButton</string>
+				<key>appearanceSpeedSlider</key>
+				<string>NSSlider</string>
+				<key>backgroundColorWell</key>
+				<string>NSColorWell</string>
+				<key>backgroundStyleButton</key>
+				<string>NSPopUpButton</string>
+				<key>screenButton</key>
+				<string>NSPopUpButton</string>
 				<key>slider_opacity</key>
 				<string>NSSlider</string>
+				<key>vanishDelaySlider</key>
+				<string>NSSlider</string>
+				<key>vanishEffectButton</key>
+				<string>NSPopUpButton</string>
+				<key>vanishSpeedSlider</key>
+				<string>NSSlider</string>
+				<key>windowSizeButton</key>
+				<string>NSPopUpButton</string>
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSPreferencePane</string>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		FA35C10E0F5AABB3002FCE77 /* GrowlITTSWPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4A47200F5A3C2A00F37A2B /* GrowlITTSWPrefs.m */; };
 		FA4A47250F5A3C2A00F37A2B /* GrowlITTSWDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4A471E0F5A3C2A00F37A2B /* GrowlITTSWDisplay.m */; };
 		FA4A47270F5A3C2A00F37A2B /* GrowlITTSWController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4A47220F5A3C2A00F37A2B /* GrowlITTSWController.m */; };
 		FA4A47400F5A3C7100F37A2B /* ITKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4A473D0F5A3C6900F37A2B /* ITKit.framework */; };
@@ -344,6 +345,7 @@
 				FA4A47270F5A3C2A00F37A2B /* GrowlITTSWController.m in Sources */,
 				FA7C86AB0F5A936900213B2E /* RegexKitLite.m in Sources */,
 				FA7C87DA0F5A9C3400213B2E /* GrowlITTSWWindow.m in Sources */,
+				FA35C10E0F5AABB3002FCE77 /* GrowlITTSWPrefs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

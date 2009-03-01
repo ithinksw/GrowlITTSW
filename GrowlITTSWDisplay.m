@@ -12,11 +12,12 @@
 	[super dealloc];
 }
 
-/* - (NSPreferencePane *) preferencePane {
-	if (!preferencePane)
-		preferencePane = [[GrowlITTSWPrefs alloc] initWithBundle:[NSBundle bundleWithIdentifier:@"com.ithinksw.growl.ittsw"]];
+- (NSPreferencePane *) preferencePane {
+	if (!preferencePane) {
+		preferencePane = [[GrowlITTSWPrefs alloc] initWithBundle:[NSBundle bundleWithIdentifier:@"com.ithinksw.growl-ittsw"]];
+	}
 	return preferencePane;
-}*/
+}
 
 //we implement requiresPositioning entirely because it was added as a requirement for doing 1.1 plugins, however
 //we don't really care if positioning is required or not, because we are only ever in the menubar.
