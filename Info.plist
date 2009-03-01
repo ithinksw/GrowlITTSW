@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>GrowlITTSW</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.ithinksw.growl-ittsw</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>GrowlITTSW</string>
+	<key>CFBundlePackageType</key>
+	<string>DISP</string>
+	<key>CFBundleSignature</key>
+	<string>GRRR</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>CSResourcesFileMapped</key>
+	<string>yes</string>
+	<key>GrowlDisplayUsesQueue</key>
+	<true/>
+	<key>GrowlPluginAuthor</key>
+	<string>iThink Software</string>
+	<key>GrowlPluginDescription</key>
+	<string>ITTSW uses the ITTransientStatusWindow class from ITKit</string>
+	<key>NSPrincipalClass</key>
+	<string>GrowlITTSWDisplay</string>
+</dict>
+</plist>
