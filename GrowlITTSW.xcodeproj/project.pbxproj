@@ -11,13 +11,15 @@
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		FA4A47250F5A3C2A00F37A2B /* GrowlITTSWDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4A471E0F5A3C2A00F37A2B /* GrowlITTSWDisplay.m */; };
 		FA4A47270F5A3C2A00F37A2B /* GrowlITTSWController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4A47220F5A3C2A00F37A2B /* GrowlITTSWController.m */; };
-		FA4A47280F5A3C2A00F37A2B /* GrowlITTSWWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4A47240F5A3C2A00F37A2B /* GrowlITTSWWindow.m */; };
 		FA4A47400F5A3C7100F37A2B /* ITKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4A473D0F5A3C6900F37A2B /* ITKit.framework */; };
 		FA4A47410F5A3C7300F37A2B /* ITFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4A47340F5A3C5900F37A2B /* ITFoundation.framework */; };
 		FA4A47510F5A3CFC00F37A2B /* GrowlITTSWPrefs.nib in Resources */ = {isa = PBXBuildFile; fileRef = FA4A474F0F5A3CFC00F37A2B /* GrowlITTSWPrefs.nib */; };
 		FA5074430F5A56DA008DEAD9 /* ITFoundation.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA4A47340F5A3C5900F37A2B /* ITFoundation.framework */; };
 		FA5074440F5A56DD008DEAD9 /* ITKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA4A473D0F5A3C6900F37A2B /* ITKit.framework */; };
 		FA50774D0F5A7A2D008DEAD9 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA50774C0F5A7A2D008DEAD9 /* PreferencePanes.framework */; };
+		FA7C86AB0F5A936900213B2E /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7C86A90F5A936900213B2E /* RegexKitLite.m */; };
+		FA7C86D00F5A93DF00213B2E /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7C86CF0F5A93DF00213B2E /* libicucore.dylib */; };
+		FA7C87DA0F5A9C3400213B2E /* GrowlITTSWWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4A47240F5A3C2A00F37A2B /* GrowlITTSWWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,10 @@
 		FA5073AA0F5A4D9A008DEAD9 /* GrowlApplicationNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlApplicationNotification.h; sourceTree = "<group>"; };
 		FA5074060F5A5562008DEAD9 /* GrowlDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlDefines.h; sourceTree = "<group>"; };
 		FA50774C0F5A7A2D008DEAD9 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
+		FA7C86A90F5A936900213B2E /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		FA7C86AA0F5A936900213B2E /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		FA7C86CF0F5A93DF00213B2E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = /usr/lib/libicucore.dylib; sourceTree = "<absolute>"; };
+		FA7C87E80F5A9FCB00213B2E /* GrowlPositioningDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlPositioningDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 				FA4A47400F5A3C7100F37A2B /* ITKit.framework in Frameworks */,
 				FA4A47410F5A3C7300F37A2B /* ITFoundation.framework in Frameworks */,
 				FA50774D0F5A7A2D008DEAD9 /* PreferencePanes.framework in Frameworks */,
+				FA7C86D00F5A93DF00213B2E /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +173,7 @@
 		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA7C86CF0F5A93DF00213B2E /* libicucore.dylib */,
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
 				FA50774C0F5A7A2D008DEAD9 /* PreferencePanes.framework */,
 			);
@@ -193,8 +201,11 @@
 		32C88E010371C26100C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FA7C86AA0F5A936900213B2E /* RegexKitLite.h */,
+				FA7C86A90F5A936900213B2E /* RegexKitLite.m */,
 				FA5074060F5A5562008DEAD9 /* GrowlDefines.h */,
 				FA50739B0F5A4D74008DEAD9 /* GrowlDefinesInternal.h */,
+				FA7C87E80F5A9FCB00213B2E /* GrowlPositioningDefines.h */,
 				FA5073AA0F5A4D9A008DEAD9 /* GrowlApplicationNotification.h */,
 				FA4A472B0F5A3C3100F37A2B /* GrowlPlugin.h */,
 				FA4A472C0F5A3C3100F37A2B /* GrowlDisplayPlugin.h */,
@@ -331,7 +342,8 @@
 			files = (
 				FA4A47250F5A3C2A00F37A2B /* GrowlITTSWDisplay.m in Sources */,
 				FA4A47270F5A3C2A00F37A2B /* GrowlITTSWController.m in Sources */,
-				FA4A47280F5A3C2A00F37A2B /* GrowlITTSWWindow.m in Sources */,
+				FA7C86AB0F5A936900213B2E /* RegexKitLite.m in Sources */,
+				FA7C87DA0F5A9C3400213B2E /* GrowlITTSWWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

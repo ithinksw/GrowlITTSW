@@ -60,6 +60,9 @@
 
 - (void)setImage:(NSImage *)newImage
 {
+	if (!newImage) {
+		newImage = [NSImage imageNamed:@"NSApplicationIcon"];
+	}
     [_image autorelease];
     _image = [newImage copy];
 }

@@ -7,10 +7,17 @@
 //
 
 #import "GrowlITTSWController.h"
-#import "GrowlITTSWWindow.h"
 
 #import <ITKit/ITTSWBackgroundView.h>
 #import <ITKit/ITWindowEffect.h>
+
+#import "RegexKitLite.h"
+
+#import "GrowlPositioningDefines.h"
+
+@interface GrowlPositionController
++ (enum GrowlPosition)selectedOriginPosition;
+@end
 
 @implementation NSImage (SmoothAdditions)
 
@@ -46,9 +53,6 @@
         [_window setExitMode:ITTransientStatusWindowExitAfterDelay];
         [_window setExitDelay:4.0];
         
-        [_window setHorizontalPosition:ITWindowPositionRight];
-        [_window setVerticalPosition:ITWindowPositionTop];
-        
         [_window setSizing:ITTransientStatusWindowMini];
         
         [_window setEntryEffect:[[[NSClassFromString(@"ITSlideVerticallyWindowEffect") alloc] initWithWindow:_window] autorelease]];
@@ -72,7 +76,6 @@
 
 - (void)showWindowWithText:(NSString *)text image:(NSImage *)image
 {
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
 	NSSize newSize;
 	NSSize oldSize = [image size];
 	
@@ -83,6 +86,57 @@
 	}
 	
 	image = [[[[NSImage alloc] initWithData:[image TIFFRepresentation]] autorelease] imageScaledSmoothlyToSize:newSize];
+	
+	NSArray *gothicChars = [NSArray arrayWithObjects:[NSString stringWithUTF8String:"☆"], [NSString stringWithUTF8String:"★"], nil];
+	NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+	
+	if (([gothicChars count] > 0) && ([text length] > 0)) {
+		NSMutableString *gothicRegex = [[NSMutableString alloc] init];
+		
+		[gothicRegex appendString:@"["];
+		for (NSString *gothicChar in gothicChars) {
+			[gothicRegex appendString:gothicChar];
+		}
+		[gothicRegex appendString:@"]+"];
+		
+		NSUInteger endOfLastRange = 0;
+		NSRange foundRange;
+		while (endOfLastRange != NSNotFound) {
+			foundRange = [text rangeOfRegex:gothicRegex inRange:NSMakeRange(endOfLastRange, ([text length] - endOfLastRange))];
+			if (foundRange.location != NSNotFound) {
+				[attributedText setAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"AppleGothic" size:(18.0 / MINI_DIVISOR)], NSFontAttributeName, nil, nil] range:foundRange];
+				endOfLastRange = foundRange.location+foundRange.length;
+				if (endOfLastRange >= [text length]) {
+					endOfLastRange = NSNotFound;
+				}
+			} else {
+				endOfLastRange = NSNotFound;
+			}
+		}
+	}
+	
+	switch ([GrowlPositionController selectedOriginPosition]) {
+		case GrowlMiddleColumnPosition:
+			[_window setVerticalPosition:ITWindowPositionMiddle];
+			[_window setHorizontalPosition:ITWindowPositionCenter];
+			break;
+		case GrowlTopLeftPosition:
+			[_window setVerticalPosition:ITWindowPositionTop];
+			[_window setHorizontalPosition:ITWindowPositionLeft];
+			break;
+		case GrowlBottomRightPosition:
+			[_window setVerticalPosition:ITWindowPositionBottom];
+			[_window setHorizontalPosition:ITWindowPositionRight];
+			break;
+		case GrowlTopRightPosition:
+			[_window setVerticalPosition:ITWindowPositionTop];
+			[_window setHorizontalPosition:ITWindowPositionRight];
+			break;
+		case GrowlBottomLeftPosition:
+			[_window setVerticalPosition:ITWindowPositionBottom];
+			[_window setHorizontalPosition:ITWindowPositionLeft];
+			break;
+	}
 	
 	[_window setImage:image];
     [_window buildTextWindowWithString:attributedText];

@@ -5,12 +5,12 @@
 	<key>IBFramework Version</key>
 	<string>672</string>
 	<key>IBLastKnownRelativeProjectPath</key>
-	<string>../../../../Growl.xcodeproj</string>
+	<string>../GrowlITTSW.xcodeproj</string>
 	<key>IBOldestOS</key>
 	<integer>3</integer>
 	<key>IBOpenObjects</key>
 	<array>
-		<integer>6</integer>
+		<integer>244</integer>
 	</array>
 	<key>IBSystem Version</key>
 	<string>9G55</string>
