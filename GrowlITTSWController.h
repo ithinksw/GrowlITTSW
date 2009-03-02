@@ -12,8 +12,12 @@
 
 @interface GrowlITTSWController : ITSharedController {
 	GrowlITTSWWindow *_window;
+	float _imageSize;
+	BOOL _imageNoUpscale;
+	BOOL _wrapNotifications;
+	int _wrapColumns;
 }
 
-- (void)showWindowWithText:(NSString *)text image:(NSImage *)image;
+- (void)showWindowWithTitle:(NSString *)title text:(NSString *)text image:(NSImage *)image;
 
 @end

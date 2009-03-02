@@ -56,6 +56,11 @@
 }
 
 - (void)syncWithPrefs {
+	_imageSize = [GrowlITTSWPrefs imageSize];
+	_imageNoUpscale = [GrowlITTSWPrefs imageNoUpscale];
+	_wrapNotifications = [GrowlITTSWPrefs wrapNotifications];
+	_wrapColumns = [GrowlITTSWPrefs wrapColumns];
+	
 	NSScreen *screen = [GrowlITTSWPrefs screen];
 	ITHorizontalWindowPosition horizontalPosition = [GrowlITTSWPrefs horizontalPosition];
 	ITVerticalWindowPosition verticalPosition = [GrowlITTSWPrefs verticalPosition];
@@ -107,17 +112,31 @@
 	}
 }
 
-- (void)showWindowWithText:(NSString *)text image:(NSImage *)image {
-	NSSize newSize;
-	NSSize oldSize = [image size];
-	
-	if (oldSize.width > oldSize.height) {
-		newSize = NSMakeSize(110.0f, (oldSize.height * (110.0f / oldSize.width)));
-	} else {
-		newSize = NSMakeSize((oldSize.width * (110.0f / oldSize.height)), 110.0f);
+- (void)showWindowWithTitle:(NSString *)title text:(NSString *)text image:(NSImage *)image {
+	if (text && ![text isEqualToString:@""] && ![text isEqualToString:@"\n"]) {
+		text = [title stringByAppendingFormat:@"\n%@", text];
 	}
 	
-	image = [[[[NSImage alloc] initWithData:[image TIFFRepresentation]] autorelease] imageScaledSmoothlyToSize:newSize];
+	NSSize newSize;
+	NSSize oldSize = [image size];
+	BOOL wouldUpscale = ((oldSize.width <= _imageSize) && (oldSize.height <= _imageSize));
+	
+	if (!(wouldUpscale && _imageNoUpscale)) {
+		if (oldSize.width > oldSize.height) {
+			newSize = NSMakeSize(_imageSize, (oldSize.height * (_imageSize / oldSize.width)));
+		} else {
+			newSize = NSMakeSize((oldSize.width * (_imageSize / oldSize.height)), _imageSize);
+		}
+		
+		image = [[[[NSImage alloc] initWithData:[image TIFFRepresentation]] autorelease] imageScaledSmoothlyToSize:newSize];
+	}
+	
+	if (_wrapNotifications) {
+		text = [text stringByReplacingOccurrencesOfRegex:[NSString stringWithFormat:@"(.{1,%i})(?: +|$)\\n?|(.{%i})", _wrapColumns, _wrapColumns] withString:@"$1$2\n"];
+	}
+	
+	//trim trailing whitespace
+	text = [text stringByReplacingOccurrencesOfRegex:@"[\\s\\r\\n]+$" withString:@""];
 	
 	NSArray *gothicChars = [NSArray arrayWithObjects:[NSString stringWithUTF8String:"☆"], [NSString stringWithUTF8String:"★"], nil];
 	NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
@@ -125,7 +144,7 @@
 	if (([gothicChars count] > 0) && ([text length] > 0)) {
 		NSMutableString *gothicRegex = [[NSMutableString alloc] init];
 		
-		[gothicRegex appendString:@"["];
+		[gothicRegex appendString:@"[\\n"];
 		for (NSString *gothicChar in gothicChars) {
 			[gothicRegex appendString:gothicChar];
 		}

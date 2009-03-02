@@ -81,7 +81,7 @@
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF630370AF2F00C91783 /* GrowlITTSW_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlITTSW_Prefix.pch; sourceTree = "<group>"; };
-		8D5B49B6048680CD000E48DA /* GrowlITTSW.growlView */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrowlITTSW.growlView; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5B49B6048680CD000E48DA /* ITTSW.growlView */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITTSW.growlView; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		FA4A471D0F5A3C2A00F37A2B /* GrowlITTSWDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlITTSWDisplay.h; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D5B49B6048680CD000E48DA /* GrowlITTSW.growlView */,
+				8D5B49B6048680CD000E48DA /* ITTSW.growlView */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -235,9 +235,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D5B49AC048680CD000E48DA /* GrowlITTSW */ = {
+		8D5B49AC048680CD000E48DA /* ITTSW */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "GrowlITTSW" */;
+			buildConfigurationList = 1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "ITTSW" */;
 			buildPhases = (
 				8D5B49AF048680CD000E48DA /* Resources */,
 				8D5B49B1048680CD000E48DA /* Sources */,
@@ -251,10 +251,10 @@
 				FA4A474A0F5A3CD300F37A2B /* PBXTargetDependency */,
 				FA4A474C0F5A3CD500F37A2B /* PBXTargetDependency */,
 			);
-			name = GrowlITTSW;
+			name = ITTSW;
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = GrowlITTSW;
-			productReference = 8D5B49B6048680CD000E48DA /* GrowlITTSW.growlView */;
+			productReference = 8D5B49B6048680CD000E48DA /* ITTSW.growlView */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -279,7 +279,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				8D5B49AC048680CD000E48DA /* GrowlITTSW */,
+				8D5B49AC048680CD000E48DA /* ITTSW */,
 			);
 		};
 /* End PBXProject section */
@@ -402,7 +402,7 @@
 					"-undefined",
 					dynamic_lookup,
 				);
-				PRODUCT_NAME = GrowlITTSW;
+				PRODUCT_NAME = ITTSW;
 				REZ_RESOURCE_MAP_READ_ONLY = YES;
 				WRAPPER_EXTENSION = growlView;
 			};
@@ -423,7 +423,7 @@
 					"-undefined",
 					dynamic_lookup,
 				);
-				PRODUCT_NAME = GrowlITTSW;
+				PRODUCT_NAME = ITTSW;
 				REZ_RESOURCE_MAP_READ_ONLY = YES;
 				WRAPPER_EXTENSION = growlView;
 			};
@@ -458,7 +458,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "GrowlITTSW" */ = {
+		1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "ITTSW" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB913B08733D840010E9CD /* Debug */,

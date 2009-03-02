@@ -64,6 +64,14 @@
 				<string>id</string>
 				<key>setBackgroundStyle</key>
 				<string>id</string>
+				<key>setBadgeImageWithAppIcon</key>
+				<string>id</string>
+				<key>setImageNoUpscale</key>
+				<string>id</string>
+				<key>setImageSize</key>
+				<string>id</string>
+				<key>setIndentWrap</key>
+				<string>id</string>
 				<key>setScreen</key>
 				<string>id</string>
 				<key>setVanishDelay</key>
@@ -73,6 +81,10 @@
 				<key>setVanishSpeed</key>
 				<string>id</string>
 				<key>setWindowSize</key>
+				<string>id</string>
+				<key>setWrap</key>
+				<string>id</string>
+				<key>setWrapColumns</key>
 				<string>id</string>
 			</dict>
 			<key>CLASS</key>
@@ -89,6 +101,14 @@
 				<string>NSColorWell</string>
 				<key>backgroundStyleButton</key>
 				<string>NSPopUpButton</string>
+				<key>badgeImageWithAppIconButton</key>
+				<string>NSButton</string>
+				<key>imageNoUpscaleButton</key>
+				<string>NSButton</string>
+				<key>imageSizeSlider</key>
+				<string>NSSlider</string>
+				<key>indentWrapButton</key>
+				<string>NSButton</string>
 				<key>screenButton</key>
 				<string>NSPopUpButton</string>
 				<key>slider_opacity</key>
@@ -101,6 +121,10 @@
 				<string>NSSlider</string>
 				<key>windowSizeButton</key>
 				<string>NSPopUpButton</string>
+				<key>wrapColumnsField</key>
+				<string>NSTextField</string>
+				<key>wrapNotificationsButton</key>
+				<string>NSButton</string>
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSPreferencePane</string>

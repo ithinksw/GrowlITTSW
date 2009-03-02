@@ -5,13 +5,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>GrowlITTSW</string>
+	<string>ITTSW</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.ithinksw.growl-ittsw</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>GrowlITTSW</string>
+	<string>ITTSW</string>
 	<key>CFBundlePackageType</key>
 	<string>DISP</string>
 	<key>CFBundleSignature</key>

@@ -31,13 +31,7 @@
 	NSString *title = [dict objectForKey:GROWL_NOTIFICATION_TITLE];
 	NSString *desc = [dict objectForKey:GROWL_NOTIFICATION_DESCRIPTION];
 	NSImage *image = [dict objectForKey:GROWL_NOTIFICATION_ICON];
-	NSString *text;
-	if (desc) {
-		text = [title stringByAppendingFormat:@"\n%@", desc];
-	} else {
-		text = title;
-	}
-	[[GrowlITTSWController sharedController] showWindowWithText:text image:image];
+	[[GrowlITTSWController sharedController] showWindowWithTitle:title text:desc image:image];
 }
 
 @end

@@ -14,6 +14,10 @@
 	IBOutlet NSPopUpButton *windowSizeButton;
 	
 	IBOutlet NSPopUpButton *screenButton;
+	IBOutlet NSSlider *imageSizeSlider;
+	IBOutlet NSButton *imageNoUpscaleButton;
+	IBOutlet NSButton *wrapNotificationsButton;
+	IBOutlet NSTextField *wrapColumnsField;
 }
 
 + (Class)appearanceEffect;
@@ -29,6 +33,11 @@
 + (ITHorizontalWindowPosition)horizontalPosition;
 + (ITVerticalWindowPosition)verticalPosition;
 
++ (float)imageSize;
++ (BOOL)imageNoUpscale;
++ (BOOL)wrapNotifications;
++ (int)wrapColumns;
+
 - (IBAction)setAppearanceEffect:(id)sender;
 - (IBAction)setAppearanceSpeed:(id)sender;
 - (IBAction)setVanishEffect:(id)sender;
@@ -40,5 +49,9 @@
 - (IBAction)setWindowSize:(id)sender;
 
 - (IBAction)setScreen:(id)sender;
+- (IBAction)setImageSize:(id)sender;
+- (IBAction)setImageNoUpscale:(id)sender;
+- (IBAction)setWrap:(id)sender;
+- (IBAction)setWrapColumns:(id)sender;
 
 @end

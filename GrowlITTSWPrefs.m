@@ -127,6 +127,34 @@
 	}
 }
 
++ (float)imageSize {
+	SYNCHRONIZE_GROWL_PREFS();
+	float imageSize = 110.0f;
+	READ_GROWL_PREF_FLOAT(@"imageSize", GrowlITTSWPrefsDomain, &imageSize);
+	return imageSize;
+}
+
++ (BOOL)imageNoUpscale {
+	SYNCHRONIZE_GROWL_PREFS();
+	BOOL imageNoUpscale = NO;
+	READ_GROWL_PREF_BOOL(@"imageNoUpscale", GrowlITTSWPrefsDomain, &imageNoUpscale);
+	return imageNoUpscale;
+}
+
++ (BOOL)wrapNotifications {
+	SYNCHRONIZE_GROWL_PREFS();
+	BOOL wrapNotifications = NO;
+	READ_GROWL_PREF_BOOL(@"wrapNotifications", GrowlITTSWPrefsDomain, &wrapNotifications);
+	return wrapNotifications;
+}
+
++ (int)wrapColumns {
+	SYNCHRONIZE_GROWL_PREFS();
+	int wrapColumns = 64;
+	READ_GROWL_PREF_INT(@"wrapColumns", GrowlITTSWPrefsDomain, &wrapColumns);
+	return wrapColumns;
+}
+
 - (NSString *)mainNibName {
 	return @"GrowlITTSWPrefs";
 }
@@ -165,6 +193,13 @@
 		[screenButton setEnabled:NO];
 	}
 	[screenButton selectItemAtIndex:[screenButton indexOfItemWithRepresentedObject:[GrowlITTSWPrefs screen]]];
+	[imageSizeSlider setFloatValue:[GrowlITTSWPrefs imageSize]];
+	[imageNoUpscaleButton setState:([GrowlITTSWPrefs imageNoUpscale] ? NSOnState : NSOffState)];
+	
+	BOOL wrapNotifications = [GrowlITTSWPrefs wrapNotifications];
+	[wrapNotificationsButton setState:(wrapNotifications ? NSOnState : NSOffState)];
+	[wrapColumnsField setIntValue:[GrowlITTSWPrefs wrapColumns]];
+	[wrapColumnsField setEnabled:wrapNotifications];
 }
 
 - (void)awakeFromNib {
@@ -272,6 +307,36 @@
 	SYNCHRONIZE_GROWL_PREFS();
 	int screenIndex = [screenButton indexOfSelectedItem];
 	WRITE_GROWL_PREF_INT(@"screenIndex", screenIndex, GrowlITTSWPrefsDomain);
+	UPDATE_GROWL_PREFS();
+}
+
+- (IBAction)setImageSize:(id)sender {
+	SYNCHRONIZE_GROWL_PREFS();
+	float imageSize = [imageSizeSlider floatValue];
+	WRITE_GROWL_PREF_FLOAT(@"imageSize", imageSize, GrowlITTSWPrefsDomain);
+	UPDATE_GROWL_PREFS();
+}
+
+- (IBAction)setImageNoUpscale:(id)sender {
+	SYNCHRONIZE_GROWL_PREFS();
+	BOOL imageNoUpscale = ([imageNoUpscaleButton state] == NSOnState) ? YES : NO;
+	WRITE_GROWL_PREF_BOOL(@"imageNoUpscale", imageNoUpscale, GrowlITTSWPrefsDomain);
+	UPDATE_GROWL_PREFS();
+}
+
+- (IBAction)setWrap:(id)sender {
+	SYNCHRONIZE_GROWL_PREFS();
+	BOOL wrapNotifications = ([wrapNotificationsButton state] == NSOnState) ? YES : NO;
+	[wrapColumnsField setEnabled:wrapNotifications];
+	WRITE_GROWL_PREF_BOOL(@"wrapNotifications", wrapNotifications, GrowlITTSWPrefsDomain);
+	UPDATE_GROWL_PREFS();
+}
+
+- (IBAction)setWrapColumns:(id)sender {
+	SYNCHRONIZE_GROWL_PREFS();
+	int wrapColumns = [wrapColumnsField intValue];
+	[wrapColumnsField setIntValue:wrapColumns];
+	WRITE_GROWL_PREF_INT(@"wrapColumns", wrapColumns, GrowlITTSWPrefsDomain);
 	UPDATE_GROWL_PREFS();
 }
 
