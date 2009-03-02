@@ -132,7 +132,7 @@
 	}
 	
 	if (_wrapNotifications) {
-		text = [text stringByReplacingOccurrencesOfRegex:[NSString stringWithFormat:@"(.{1,%i})(?: +|$)\\n?|(.{%i})", _wrapColumns, _wrapColumns] withString:@"$1$2\n"];
+		text = [text stringByReplacingOccurrencesOfRegex:[NSString stringWithFormat:@"(\\S\\S{%i,}|.{1,%i})(?:\\s+|$)", _wrapColumns, _wrapColumns] withString:@"$1\n"];
 	}
 	
 	//trim trailing whitespace
