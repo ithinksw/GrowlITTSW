@@ -18,6 +18,6 @@
 	int _wrapColumns;
 }
 
-- (void)showWindowWithTitle:(NSString *)title text:(NSString *)text image:(NSImage *)image;
+- (void)showWindowWithTitle:(NSString *)title desc:(NSString *)desc image:(NSImage *)image;
 
 @end

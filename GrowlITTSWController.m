@@ -112,9 +112,11 @@
 	}
 }
 
-- (void)showWindowWithTitle:(NSString *)title text:(NSString *)text image:(NSImage *)image {
-	if (text && ![text isEqualToString:@""] && ![text isEqualToString:@"\n"]) {
-		text = [title stringByAppendingFormat:@"\n%@", text];
+- (void)showWindowWithTitle:(NSString *)title desc:(NSString *)desc image:(NSImage *)image {
+	NSString *text = title;
+	
+	if (desc && ![desc isEqualToString:@""] && ![desc isEqualToString:@"\n"]) {
+		text = [text stringByAppendingFormat:@"\n%@", desc];
 	}
 	
 	NSSize newSize;
@@ -136,7 +138,7 @@
 	}
 	
 	//trim trailing whitespace
-	text = [text stringByReplacingOccurrencesOfRegex:@"[\\s\\r\\n]+$" withString:@""];
+	text = [text stringByReplacingOccurrencesOfRegex:@"\\s+$" withString:@""];
 	
 	NSArray *gothicChars = [NSArray arrayWithObjects:[NSString stringWithUTF8String:"☆"], [NSString stringWithUTF8String:"★"], nil];
 	NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
