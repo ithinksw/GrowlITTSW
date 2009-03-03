@@ -101,6 +101,8 @@
 		FA5073AA0F5A4D9A008DEAD9 /* GrowlApplicationNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlApplicationNotification.h; sourceTree = "<group>"; };
 		FA5074060F5A5562008DEAD9 /* GrowlDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlDefines.h; sourceTree = "<group>"; };
 		FA50774C0F5A7A2D008DEAD9 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
+		FA66876D0F5D1B7F00B82AE3 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		FA66876E0F5D1B7F00B82AE3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FA7C86A90F5A936900213B2E /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		FA7C86AA0F5A936900213B2E /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		FA7C86CF0F5A93DF00213B2E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = /usr/lib/libicucore.dylib; sourceTree = "<absolute>"; };
@@ -152,6 +154,8 @@
 				FA4A474F0F5A3CFC00F37A2B /* GrowlITTSWPrefs.nib */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+				FA66876D0F5D1B7F00B82AE3 /* COPYING */,
+				FA66876E0F5D1B7F00B82AE3 /* LICENSE */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

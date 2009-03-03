@@ -1,10 +1,10 @@
-//
-//  GrowlITTSWController.h
-//  Growl
-//
-//  Created by Joseph Spiros on 2/28/09.
-//  Copyright 2009 iThink Software. All rights reserved.
-//
+/*
+ *	GrowlITTSW
+ *	GrowlITTSWController.h
+ *
+ *	Copyright (c) 2009 iThink Software
+ *
+ */
 
 #import <Cocoa/Cocoa.h>
 #import <ITFoundation/ITSharedController.h>

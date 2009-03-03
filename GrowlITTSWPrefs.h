@@ -1,3 +1,11 @@
+/*
+ *	GrowlITTSW
+ *	GrowlITTSWPrefs.h
+ *
+ *	Copyright (c) 2009 iThink Software
+ *
+ */
+
 #import <PreferencePanes/PreferencePanes.h>
 #import <ITKit/ITKit.h>
 #import <ITKit/ITTSWBackgroundView.h>
